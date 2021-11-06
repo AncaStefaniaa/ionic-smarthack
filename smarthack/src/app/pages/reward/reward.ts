@@ -6,5 +6,10 @@ import { Component } from "@angular/core";
   styleUrls: ["./reward.scss"],
 })
 export class RewardPage {
+  groupedRewards = [
+    { name: "a", rewards: [1, 2, 3] },
+    { name: "b", rewards: [1, 2, 3] },
+  ];
+
   constructor() {}
 }

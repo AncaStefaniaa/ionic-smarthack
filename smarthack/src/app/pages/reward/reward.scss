@@ -1,16 +1,27 @@
-ion-toolbar {
-  position: absolute;
+ion-card {
+  width: 100%;
+  height: 160px;
+  box-shadow: none;
+  border-radius: 12px;
 
-  top: 0;
-  left: 0;
-  right: 0;
-
-  --background: transparent;
-  --color: white;
+  img {
+      object-fit: cover;
+      width: 100%;
+      transform: scale(1.1, 1.1) rotate(1deg);
+      transition: 600ms all ease-in-out;
+  }
 }
 
-ion-toolbar ion-button,
-ion-toolbar ion-back-button,
-ion-toolbar ion-menu-button {
-  --color: white;
+.swiper-slide-active {
+  transform: scale(1.05, 1.05);
+
+  ion-card {
+      img {
+          transform: scale(1, 1);
+      }
+  }
+}
+
+.swiper-slide {
+  transition: 400ms all ease-in-out;
 }
