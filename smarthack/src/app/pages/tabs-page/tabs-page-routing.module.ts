@@ -61,12 +61,12 @@ const routes: Routes = [
         ],
       },
       {
-        path: "about",
+        path: "reward",
         children: [
           {
             path: "",
             loadChildren: () =>
-              import("../about/about.module").then((m) => m.AboutModule),
+              import("../reward/reward.module").then((m) => m.RewardModule),
           },
         ],
       },

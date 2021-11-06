@@ -1,0 +1,9 @@
+<app-header></app-header>
+
+<ion-content>
+    <reward-slider
+      *ngFor="let item of groupedRewards"
+      [name]="item.name"
+      [rewards]="item.rewards"
+    ></reward-slider>
+</ion-content>
