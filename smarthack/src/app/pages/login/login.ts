@@ -6,6 +6,7 @@ import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
 
+import {LoginService} from './login.service'
 
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginPage {
 
   constructor(
     public userData: UserData,
-    public router: Router
+    public router: Router,
+    public a: LoginService
   ) { }
 
   onLogin(form: NgForm) {
@@ -29,6 +31,10 @@ export class LoginPage {
       this.userData.login(this.login.username);
       this.router.navigateByUrl('/app/tabs/schedule');
     }
+    this.a.getTranslation().subscribe((res) => {
+      console.log(res);
+    })
+
   }
 
   onSignup() {
