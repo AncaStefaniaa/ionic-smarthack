@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { RewardPage } from './reward';
 import { RewardPageRoutingModule } from './reward-routing.module';
 import { RewardSlider } from '../reward-slider/reward-slider';
-import { RewardService } from './reward.service';
+import { RewardModalPage } from '../reward-modal/reward-modal.page';
 
 @NgModule({
   imports: [
@@ -15,8 +15,8 @@ import { RewardService } from './reward.service';
     IonicModule,
     RewardPageRoutingModule
   ],
-  declarations: [RewardPage, RewardSlider],
-  entryComponents: [RewardSlider],
+  declarations: [RewardPage, RewardSlider, RewardModalPage],
+  entryComponents: [RewardSlider, RewardModalPage],
   bootstrap: [RewardPage],
 })
 export class RewardModule {}
