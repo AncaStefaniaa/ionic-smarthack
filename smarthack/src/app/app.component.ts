@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
       icon: "medal",
     },
     {
-      title: "About",
-      url: "/app/tabs/about",
+      title: "Rewards",
+      url: "/app/tabs/reward",
       icon: "information-circle",
     },
   ];
