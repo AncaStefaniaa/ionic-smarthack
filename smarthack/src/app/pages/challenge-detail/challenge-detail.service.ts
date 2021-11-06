@@ -7,7 +7,19 @@ import { Injectable } from "@angular/core";
 export class ChallengeService {
   constructor(private httpClient: HttpClient) {}
 
-  sendImage(imageData) {
+  getAll() {
+    return this.httpClient.get<any>(
+      "http://192.168.100.32:8080/api/challenges"
+    );
+  }
+
+  get(id) {
+    return this.httpClient.get<any>(
+      `http://192.168.100.32:8080/api/challenges/${id}`
+    );
+  }
+
+  sendImage(challengeId, b64Image) {
     // const date = new Date().valueOf();
     // const imageName = date + ".jpeg";
 
@@ -21,7 +33,7 @@ export class ChallengeService {
 
     return this.httpClient.post<any>(
       "http://192.168.100.32:8080/api/completeChallenge",
-      imageData
+      { challengeId, b64Image }
     );
   }
 

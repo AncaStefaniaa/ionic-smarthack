@@ -16,28 +16,21 @@
 
   <ion-grid fixed>
     <ion-row>
-      <ion-col size="12" size-md="6" *ngFor="let speaker of speakers">
+      <ion-col size="12" size-md="6" *ngFor="let challenge of challenges">
         <ion-card class="speaker-card">
           <ion-card-header>
             <ion-item
               detail="false"
               lines="none"
               class="speaker-item"
-              routerLink="/app/tabs/challenges/speaker-details/{{speaker.id}}"
+              routerLink="/app/tabs/challenges/speaker-details/{{challenge.id}}"
             >
               <div class="item-container">
                 <ion-avatar class="avatar" slot="start">
-                  <img
-                    [src]="speaker.profilePic"
-                    [alt]="speaker.name + ' profile picture'"
-                  />
+                  <img [src]="challenge.iconUrl" />
                 </ion-avatar>
-                <h2 class="chalenge-name">{{speaker.name}}</h2>
-                <div class="description">
-                  Tree-planting is the process of transplanting tree seedlings,
-                  generally for forestry, land reclamation, or landscaping
-                  purpose.
-                </div>
+                <h2 class="chalenge-name">{{challenge.title}}</h2>
+                <div class="description">{{challenge.message}}</div>
               </div>
             </ion-item>
           </ion-card-header>
@@ -45,11 +38,11 @@
           <ion-card-content>
             <ion-list lines="none">
               <ion-item>
-                <h3 class="reward">20$</h3>
+                <h3 class="reward">{{challenge.rewardAmount}} Deed</h3>
               </ion-item>
               <ion-item
                 detail="false"
-                routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}"
+                routerLink="/app/tabs/speakers/speaker-details/{{challenge.id}}"
               >
                 <ion-label>
                   <ion-chip>
@@ -65,7 +58,7 @@
             </ion-list>
             <div class="start-button">
               <ion-fab
-                routerLink="/app/tabs/challenges/speaker-details/{{speaker.id}}"
+                routerLink="/app/tabs/challenges/speaker-details/{{challenge.id}}"
                 vertical="bottom"
                 horizontal="center"
               >

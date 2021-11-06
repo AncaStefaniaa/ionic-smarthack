@@ -42,7 +42,7 @@ const routes: Routes = [
               ),
           },
           {
-            path: "speaker-details/:speakerId",
+            path: "speaker-details/:id",
             loadChildren: () =>
               import("../challenge-detail/challenge-detail.module").then(
                 (m) => m.ChallengeDetailModule

@@ -4,8 +4,8 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/app/tabs/speakers"></ion-back-button>
       </ion-buttons>
-      <ion-buttons *ngIf="speaker" slot="end">
-        <ion-button (click)="openSpeakerShare(speaker)">
+      <ion-buttons *ngIf="challenge" slot="end">
+        <ion-button>
           <ion-icon
             slot="icon-only"
             ios="share-outline"
@@ -17,12 +17,12 @@
   </ion-header>
 
   <div class="speaker-background">
-    <img [src]="speaker?.profilePic" [alt]="speaker?.name" />
-    <h2>{{speaker?.name}}</h2>
+    <img [src]="challenge?.iconUrl" />
+    <h2>{{challenge?.title}}</h2>
   </div>
 
   <div class="ion-padding speaker-detail">
-    <p>{{speaker?.about}} Say hello on social media!</p>
+    <p>{{challenge?.message}} Say hello on social media!</p>
   </div>
 
   <ion-fab vertical="bottom" horizontal="center">
