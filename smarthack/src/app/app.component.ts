@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   ];
   loggedIn = false;
   dark = false;
-
+  img = "../assets/img/speakers/logo.png";
   constructor(
     private menu: MenuController,
     private platform: Platform,

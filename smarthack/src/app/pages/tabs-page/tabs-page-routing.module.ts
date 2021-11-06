@@ -44,8 +44,8 @@ const routes: Routes = [
           {
             path: "speaker-details/:speakerId",
             loadChildren: () =>
-              import("../speaker-detail/speaker-detail.module").then(
-                (m) => m.SpeakerDetailModule
+              import("../challenge-detail/challenge-detail.module").then(
+                (m) => m.ChallengeDetailModule
               ),
           },
         ],
