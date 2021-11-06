@@ -21,19 +21,19 @@
 
 <ion-content fullscreen="true">
   <ion-content>
-    <ng-container *ngIf="FeedItems && FeedItems.length > 0; else notFound">
-      <ion-card *ngFor="let item of FeedItems" class="ion-card-background-page">
+    <ng-container *ngIf="feederItems && feederItems.length > 0; else notFound">
+      <ion-card *ngFor="let item of feederItems" class="ion-card-background-page">
         <ion-card-header>
           <ion-card-title>
             <ion-item>
               <ion-avatar>
-                <img [src]="item.profile_image_url_https">
+                <img src="data:image/png;base64,{{item.imageUrl}}">
               </ion-avatar>
-              <ion-label class="label-text">  <h1> {{  item.name   }} </h1>  </ion-label>
+              <ion-label class="label-text">  <h1> {{  item.publishedBy   }} </h1>  </ion-label>
             </ion-item>
           </ion-card-title>
         </ion-card-header>
-        <img class="card-photo" [src]="item.hashTagImage">
+        <img class="card-photo" src="data:image/png;base64,{{item.imageUrl}}">
 
         <ion-card-header>
           <ion-card-title>
@@ -43,7 +43,7 @@
           </ion-card-title>
         </ion-card-header>
 
-        <ion-card-content [innerHTML]="item.text">
+        <ion-card-content [innerHTML]="item.content">
       </ion-card-content>
       </ion-card>
     </ng-container>
@@ -53,7 +53,7 @@
           <ion-card-header>
           </ion-card-header>
           <ion-card-content class="ion-text-center">
-              Not found any tweet
+              Not found any post
           </ion-card-content>
       </ion-card>
     </ng-template>
