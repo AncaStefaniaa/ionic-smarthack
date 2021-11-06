@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 
@@ -19,6 +19,16 @@ export class UserData {
 
   login(userData) {
     return this.httpClient.post<any>(`${this.apiUrl}/authenticate`, userData);
+  }
+
+  async account() {
+    const jwt = await this.storage.get("token");
+    return this.httpClient.get<any>(`${this.apiUrl}/account`, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      }),
+    });
   }
 
   hasFavorite(sessionName: string): boolean {
