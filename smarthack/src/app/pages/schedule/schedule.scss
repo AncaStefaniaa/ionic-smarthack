@@ -6,6 +6,28 @@ ion-fab-button {
   --color: var(--ion-color-primary, #3880ff);
 }
 
+
+.card-photo
+{
+  width: 100vw;
+  margin-left: -10px;
+  height: 35vw;
+}
+
+.header-right
+{
+  position:absolute!important;
+  top:10%!important;
+  right: 5%!important;
+  text-align: right!important;
+}
+
+.label-text
+{
+  padding: 2vw;
+  margin: 10px;
+}
+
 /*
  * Material Design uses the ripple for activated
  * so only style the iOS activated background

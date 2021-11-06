@@ -1,12 +1,8 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-
+import { Storage } from "@ionic/storage";
 import { UserData } from "../../providers/user-data";
-
-import { UserOptions } from "../../interfaces/user-options";
-
-import { LoginService } from "./login.service";
 
 @Component({
   selector: "page-login",
@@ -14,23 +10,22 @@ import { LoginService } from "./login.service";
   styleUrls: ["./login.scss"],
 })
 export class LoginPage {
-  login: UserOptions = { username: "", password: "" };
+  login: any = { login: "", password: "" };
   submitted = false;
 
   constructor(
     public userData: UserData,
     public router: Router,
-    public loginService: LoginService
+    public storage: Storage
   ) {}
 
   onLogin(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
-      this.loginService.login(this.login).subscribe((res) => {
-        console.log(res);
-        this.userData.login(this.login.username);
-        this.router.navigateByUrl("/app/tabs/schedule");
+      this.userData.login(form.value).subscribe(async ({ id_token }) => {
+        await this.storage.set("token", id_token);
+        this.router.navigateByUrl("/app/tabs/challenges");
       });
     }
   }
