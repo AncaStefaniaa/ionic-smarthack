@@ -11,7 +11,7 @@ ion-col:not(:last-of-type) .speaker-card {
 }
 
 .speaker-card .speaker-item {
-  --min-height: 85px;
+  // --min-height: 85px;
 }
 
 .speaker-card .speaker-item h2 {
@@ -30,7 +30,7 @@ ion-col:not(:last-of-type) .speaker-card {
 }
 
 .speaker-card ion-card-content {
-  flex: 1 1 auto;
+  // flex: 1 1 auto;
 
   padding: 0;
 }
@@ -40,7 +40,46 @@ ion-col:not(:last-of-type) .speaker-card {
 }
 
 .md ion-list {
-  border-top: 1px solid var(--ion-color-step-150, #d7d8da);
+  // border-top: 1px solid var(--ion-color-step-150, #d7d8da);
 
   padding: 0;
+}
+
+ion-card {
+  box-shadow: 0px 1px 30px #3b5249;
+  --ion-background-color: rgb(255, 255, 255);
+}
+
+.container {
+  --ion-background-color: linear-gradient(180deg, #3b5249 30%, #f0f0f0 100%);
+}
+
+.item-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.avatar {
+  margin: 10px auto;
+}
+
+.reward {
+  margin: auto;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.description {
+  text-align: justify;
+}
+.chalenge-name {
+  text-align: center;
+}
+
+.start-button {
+  margin-top: 70px;
+}
+
+ion-fab-button {
+  --background: #382933;
 }

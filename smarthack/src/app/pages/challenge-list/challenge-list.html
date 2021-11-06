@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Challenges</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container" fullscreen="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Challenges</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let speaker of speakers">
+        <ion-card class="speaker-card">
+          <ion-card-header>
+            <ion-item
+              detail="false"
+              lines="none"
+              class="speaker-item"
+              routerLink="/app/tabs/challenges/speaker-details/{{speaker.id}}"
+            >
+              <div class="item-container">
+                <ion-avatar class="avatar" slot="start">
+                  <img
+                    [src]="speaker.profilePic"
+                    [alt]="speaker.name + ' profile picture'"
+                  />
+                </ion-avatar>
+                <h2 class="chalenge-name">{{speaker.name}}</h2>
+                <div class="description">
+                  Tree-planting is the process of transplanting tree seedlings,
+                  generally for forestry, land reclamation, or landscaping
+                  purpose.
+                </div>
+              </div>
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <h3 class="reward">20$</h3>
+              </ion-item>
+              <ion-item
+                detail="false"
+                routerLink="/app/tabs/speakers/speaker-details/{{speaker.id}}"
+              >
+                <ion-label>
+                  <ion-chip>
+                    <ion-icon name="flower-outline" color="alert"></ion-icon>
+                    <ion-label>#platTree</ion-label>
+                  </ion-chip>
+                  <ion-chip>
+                    <ion-icon name="body-outline" color="alert"></ion-icon>
+                    <ion-label>#helpPeople</ion-label>
+                  </ion-chip>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+            <div class="start-button">
+              <ion-fab vertical="bottom" horizontal="center">
+                <ion-fab-button>
+                  <ion-icon name="caret-forward-circle-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
