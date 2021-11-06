@@ -5,13 +5,12 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class LoginService {
-    private widgetNames = ['production-workbench-ui-pwb-comments-widget'];
 
     constructor(private httpClient: HttpClient) {
 
     }
 
-    getTranslation() {
-        return this.httpClient.get('');
+    login(userData) {
+        return this.httpClient.post('', userData);
     }
 }
