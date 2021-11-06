@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { RewardPage } from './reward';
 import { RewardPageRoutingModule } from './reward-routing.module';
 import { RewardSlider } from '../reward-slider/reward-slider';
+import { RewardService } from './reward.service';
 
 @NgModule({
   imports: [
