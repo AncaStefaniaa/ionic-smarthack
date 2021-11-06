@@ -4,24 +4,24 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root",
 })
-export class LoginService {
+export class ChallengeService {
   constructor(private httpClient: HttpClient) {}
 
   sendImage(imageData) {
-    const date = new Date().valueOf();
-    const imageName = date + ".jpeg";
+    // const date = new Date().valueOf();
+    // const imageName = date + ".jpeg";
 
-    const imageBlob = this.dataURItoBlob(imageData);
-    const imageFile = new File([imageBlob], imageName, { type: "image/jpeg" });
+    // const imageBlob = this.dataURItoBlob(imageData);
+    // const imageFile = new File([imageBlob], imageName, { type: "image/jpeg" });
 
-    let formData = new FormData();
-    formData.append("file", imageBlob, imageName);
+    // let formData = new FormData();
+    // formData.append("file", imageBlob, imageName);
 
-    var options = { content: formData };
+    // var options = { content: formData };
 
     return this.httpClient.post<any>(
-      "http://192.168.100.32:8080/api/complete_challenge",
-      formData
+      "http://192.168.100.32:8080/api/completeChallenge",
+      imageData
     );
   }
 

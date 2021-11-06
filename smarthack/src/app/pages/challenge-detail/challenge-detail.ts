@@ -8,6 +8,7 @@ import {
   CameraOptions,
   PictureSourceType,
 } from "@ionic-native/camera/ngx";
+import { ChallengeService } from "./challenge-detail.service";
 @Component({
   selector: "page-speaker-detail",
   templateUrl: "challenge-detail.html",
@@ -22,7 +23,8 @@ export class ChallengeDetailPage {
     public actionSheetCtrl: ActionSheetController,
     public confData: ConferenceData,
     public inAppBrowser: InAppBrowser,
-    public camera: Camera
+    public camera: Camera,
+    public challengeService: ChallengeService
   ) {}
 
   ionViewWillEnter() {
@@ -121,6 +123,9 @@ export class ChallengeDetailPage {
       let base64Image = "data:image/jpeg;base64," + imageData;
 
       console.log(base64Image);
+      this.challengeService.sendImage(base64Image).subscribe((res) => {
+        console.log(res);
+      });
     });
   }
 }
