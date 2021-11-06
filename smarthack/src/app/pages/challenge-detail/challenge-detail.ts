@@ -3,7 +3,11 @@ import { ActivatedRoute } from "@angular/router";
 import { ConferenceData } from "../../providers/conference-data";
 import { ActionSheetController } from "@ionic/angular";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
-
+import {
+  Camera,
+  CameraOptions,
+  PictureSourceType,
+} from "@ionic-native/camera/ngx";
 @Component({
   selector: "page-speaker-detail",
   templateUrl: "challenge-detail.html",
@@ -17,7 +21,8 @@ export class ChallengeDetailPage {
     private route: ActivatedRoute,
     public actionSheetCtrl: ActionSheetController,
     public confData: ConferenceData,
-    public inAppBrowser: InAppBrowser
+    public inAppBrowser: InAppBrowser,
+    public camera: Camera
   ) {}
 
   ionViewWillEnter() {
@@ -99,5 +104,23 @@ export class ChallengeDetailPage {
     });
 
     await actionSheet.present();
+  }
+
+  takePicture(sourceType: PictureSourceType) {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: sourceType,
+      targetHeight: 500,
+      targetWidth: 500,
+    };
+
+    this.camera.getPicture(options).then((imageData) => {
+      let base64Image = "data:image/jpeg;base64," + imageData;
+
+      console.log(base64Image);
+    });
   }
 }
