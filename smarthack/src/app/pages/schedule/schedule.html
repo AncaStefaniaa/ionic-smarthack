@@ -9,7 +9,9 @@
       >
         <ion-item>
           <ion-avatar slot="start">
-            <img src="data:image/png;base64,{{item.imageUrl}}" />
+            <img
+              src="https://eu.ui-avatars.com/api/?name={{item.publishedBy}}"
+            />
           </ion-avatar>
           <ion-label>
             <h3>{{ item.publishedBy }}</h3>
@@ -17,7 +19,10 @@
           </ion-label>
         </ion-item>
 
-        <img style="width: 100%; height: auto;" src="data:image/png;base64,{{item.imageUrl}}" />
+        <img
+          style="width: 100%; height: auto"
+          src="data:image/png;base64,{{item.imageUrl}}"
+        />
 
         <ion-card-content>
           <ion-chip *ngFor="let item of [1,2,3]">
