@@ -1,4 +1,8 @@
 <ion-app [class.dark-theme]="dark">
+  <div class="app-loader" *ngIf="loadingService.isLoading$ | async">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content">
       <ion-content>

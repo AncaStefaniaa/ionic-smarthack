@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
@@ -14,6 +14,8 @@ import { environment } from "../environments/environment";
 import { FormsModule } from "@angular/forms";
 import { Camera } from "@ionic-native/camera/ngx";
 import { HeaderModule } from "./pages/header/header.module";
+import { LoadingInterceptor } from "./loading.interceptor";
+import { LoadingService } from "./loading.service";
 @NgModule({
   imports: [
     BrowserModule,
@@ -28,7 +30,14 @@ import { HeaderModule } from "./pages/header/header.module";
     HeaderModule,
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar, Camera],
+  providers: [
+    InAppBrowser,
+    SplashScreen,
+    StatusBar,
+    Camera,
+    LoadingService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

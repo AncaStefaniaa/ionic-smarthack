@@ -11,6 +11,7 @@ import { Storage } from "@ionic/storage";
 
 import { UserData } from "./providers/user-data";
 import { ChallengeService } from "./providers/challenge.service";
+import { LoadingService } from "./loading.service";
 
 @Component({
   selector: "app-root",
@@ -49,7 +50,8 @@ export class AppComponent implements OnInit {
     private userData: UserData,
     private challengeService: ChallengeService,
     private swUpdate: SwUpdate,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public loadingService: LoadingService
   ) {
     this.initializeApp();
 
