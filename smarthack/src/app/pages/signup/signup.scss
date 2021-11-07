@@ -11,3 +11,13 @@
 .list {
   margin-bottom: 0;
 }
+
+ion-content.page {
+  --ion-background-color: linear-gradient(0deg, #3b5249 30%, #f0f0f0 100%);
+}
+
+ion-item,
+input {
+  --ion-background-color: rgb(232, 240, 254) !important;
+  background: none;
+}

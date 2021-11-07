@@ -22,7 +22,6 @@
       <h2 ion-text style="color: white">Are you ready for new challenges?</h2>
     </div>
     <ion-row>
-      <ion-button routerLink="/success">bla</ion-button>
       <ion-col size="12" size-md="6" *ngFor="let challenge of challenges">
         <ion-card class="speaker-card" [disabled]="challenge.completed">
           <ion-card-header>
@@ -44,7 +43,7 @@
 
           <ion-card-content>
             <ion-list lines="none">
-              <ion-item>
+              <ion-item style="margin-bottom: -15px">
                 <h3 class="reward">
                   <div class="reward-number">{{challenge.rewardAmount}}</div>
                   <img
@@ -57,14 +56,9 @@
                 detail="false"
                 routerLink="/app/tabs/speakers/speaker-details/{{challenge.id}}"
               >
-                <ion-label>
+                <ion-label *ngFor="let hashtag of challenge.hashTags">
                   <ion-chip>
-                    <ion-icon name="flower-outline" color="alert"></ion-icon>
-                    <ion-label>#platTree</ion-label>
-                  </ion-chip>
-                  <ion-chip>
-                    <ion-icon name="body-outline" color="alert"></ion-icon>
-                    <ion-label>#helpPeople</ion-label>
+                    <ion-label>#{{hashtag.name}}</ion-label>
                   </ion-chip>
                 </ion-label>
               </ion-item>
@@ -75,9 +69,13 @@
                 vertical="bottom"
                 horizontal="center"
               >
-                <ion-fab-button>
-                  <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                </ion-fab-button>
+                <ion-button color="tertiary" class="see-more" expand="block">
+                  <ion-icon
+                    slot="start"
+                    name="caret-forward-circle-outline"
+                  ></ion-icon>
+                  See more
+                </ion-button>
               </ion-fab>
             </div>
           </ion-card-content>
