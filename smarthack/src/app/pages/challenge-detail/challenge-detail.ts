@@ -69,7 +69,8 @@ export class ChallengeDetailPage implements OnInit {
           this.isLoading = false;
           // this.showSuccessModal(completed);
           window.dispatchEvent(new CustomEvent("user:update"));
-          this.router.navigateByUrl("success");
+          console.log(completed);
+          this.router.navigateByUrl(completed ? "success" : "reject");
         },
         () => {
           this.isLoading = false;

@@ -56,9 +56,9 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
 
-    if (userData.isLoggedIn()) {
-      router.navigateByUrl("/app/tabs/challenges");
-    }
+    // if (userData.isLoggedIn()) {
+    //   router.navigateByUrl("/app/tabs/challenges");
+    // }
   }
 
   async ngOnInit() {

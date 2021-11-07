@@ -6,7 +6,7 @@ import { RewardModalPage } from "../reward-modal/reward-modal.page";
   selector: "reward-slider",
   template: `
     <h3 class="ion-padding-top ion-padding-start">{{ name }}</h3>
-    <ion-slides [options]="option" class="ion-margin-top">
+    <ion-slides [options]="option" class="ion-margin-top" style="padding-bottom: 80px">
       <ion-slide *ngFor="let reward of rewards">
         <ion-card
           (click)="claimReward(reward)"
@@ -20,8 +20,16 @@ import { RewardModalPage } from "../reward-modal/reward-modal.page";
               reward.content
             }}</ion-card-title>
             <ion-card-subtitle *ngIf="!reward.completed"
-              >{{ reward.value }} Deed</ion-card-subtitle
-            >
+              >{{ reward.value }}
+              <img
+                style="
+              width: 25px;
+              height: 25px;
+              margin-bottom: -5px;
+              margin-left: -5px;
+            "
+                src="../../../assets/img/speakers/coin3.gif"
+            /></ion-card-subtitle>
           </ion-card-header>
         </ion-card>
       </ion-slide>
