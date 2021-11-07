@@ -52,75 +52,18 @@ export class AppComponent implements OnInit {
     private toastCtrl: ToastController
   ) {
     this.initializeApp();
+
+    if (userData.isLoggedIn()) {
+      router.navigateByUrl("/app/tabs/challenges");
+    }
   }
 
-  async ngOnInit() {
-    this.checkLoginStatus();
-    this.listenForLoginEvents();
-
-    this.swUpdate.available.subscribe(async (res) => {
-      const toast = await this.toastCtrl.create({
-        message: "Update available!",
-        position: "bottom",
-        buttons: [
-          {
-            role: "cancel",
-            text: "Reload",
-          },
-        ],
-      });
-
-      await toast.present();
-
-      toast
-        .onDidDismiss()
-        .then(() => this.swUpdate.activateUpdate())
-        .then(() => window.location.reload());
-    });
-  }
+  async ngOnInit() {}
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  checkLoginStatus() {
-    return this.userData.isLoggedIn().then((loggedIn) => {
-      return this.updateLoggedInStatus(loggedIn);
-    });
-  }
-
-  updateLoggedInStatus(loggedIn: boolean) {
-    setTimeout(() => {
-      this.loggedIn = loggedIn;
-    }, 300);
-  }
-
-  listenForLoginEvents() {
-    window.addEventListener("user:login", () => {
-      this.updateLoggedInStatus(true);
-    });
-
-    window.addEventListener("user:signup", () => {
-      this.updateLoggedInStatus(true);
-    });
-
-    window.addEventListener("user:logout", () => {
-      this.updateLoggedInStatus(false);
-    });
-  }
-
-  logout() {
-    this.userData.logout().then(() => {
-      return this.router.navigateByUrl("/app/tabs/schedule");
-    });
-  }
-
-  openTutorial() {
-    this.menu.enable(false);
-    this.storage.set("ion_did_tutorial", false);
-    this.router.navigateByUrl("/tutorial");
   }
 }

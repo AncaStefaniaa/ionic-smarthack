@@ -39,7 +39,7 @@ export class AccountPage implements AfterViewInit {
         {
           text: 'Ok',
           handler: (data: any) => {
-            this.userData.setUsername(data.username);
+            // this.userData.setUsername(data.username);
             this.getUsername();
           }
         }
@@ -57,9 +57,9 @@ export class AccountPage implements AfterViewInit {
   }
 
   getUsername() {
-    this.userData.getUsername().then((username) => {
-      this.username = username;
-    });
+    // this.userData.getUsername().then((username) => {
+    //   this.username = username;
+    // });
   }
 
   changePassword() {
@@ -67,7 +67,7 @@ export class AccountPage implements AfterViewInit {
   }
 
   logout() {
-    this.userData.logout();
+    // this.userData.logout();
     this.router.navigateByUrl('/login');
   }
 

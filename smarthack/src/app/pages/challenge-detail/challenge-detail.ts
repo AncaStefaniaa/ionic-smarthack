@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ConferenceData } from "../../providers/conference-data";
-import { ActionSheetController } from "@ionic/angular";
+import { ActionSheetController, ModalController } from "@ionic/angular";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import {
   Camera,
@@ -9,6 +9,7 @@ import {
   PictureSourceType,
 } from "@ionic-native/camera/ngx";
 import { ChallengeService } from "../../providers/challenge.service";
+import { GenericResultModalPage } from "../generic-result-modal/generic-result-modal.page";
 
 @Component({
   selector: "page-speaker-detail",
@@ -22,8 +23,8 @@ export class ChallengeDetailPage implements OnInit {
   constructor(
     public camera: Camera,
     private route: ActivatedRoute,
-
-    public challengeService: ChallengeService
+    private modalController: ModalController,
+    private challengeService: ChallengeService
   ) {}
 
   ngOnInit() {
@@ -34,22 +35,14 @@ export class ChallengeDetailPage implements OnInit {
       obs.subscribe(
         (res) => {
           this.isLoading = false;
-          this.onSuccess(res);
+          this.challenge = res;
         },
         () => {
           this.isLoading = false;
-          this.onError();
+          console.log("Error fetching rewards");
         }
       );
     });
-  }
-
-  onSuccess(data) {
-    this.challenge = data;
-  }
-
-  onError() {
-    console.log("Error fetching rewards");
   }
 
   takePicture(sourceType: PictureSourceType) {
@@ -68,9 +61,29 @@ export class ChallengeDetailPage implements OnInit {
         this.challenge.id,
         imageData
       );
-      obs.subscribe((res) => {
-        console.log("res", res);
-      });
+      obs.subscribe(
+        ({ completed }) => {
+          this.isLoading = false;
+          this.showSuccessModal(completed);
+        },
+        () => {
+          this.isLoading = false;
+          this.showSuccessModal(false);
+        }
+      );
     });
+  }
+
+  async showSuccessModal(success) {
+    const modal = await this.modalController.create({
+      component: GenericResultModalPage,
+      componentProps: {
+        success,
+        redirect: success
+          ? "/app/tabs/schedule"
+          : `/app/tabs/challenges/speaker-details/${this.challenge.id}`,
+      },
+    });
+    return await modal.present();
   }
 }

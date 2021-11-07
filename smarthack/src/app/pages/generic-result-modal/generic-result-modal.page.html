@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="success;then successPanel else errorPanel"></div>
+
+  <ng-template #successPanel>success</ng-template>
+
+  <ng-template #errorPanel>error</ng-template>
+
+  <button (click)="onRedirect()">Redirect</button>
+</ion-content>

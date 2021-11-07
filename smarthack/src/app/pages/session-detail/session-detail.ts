@@ -30,9 +30,9 @@ export class SessionDetailPage {
               if (session && session.id === sessionId) {
                 this.session = session;
 
-                this.isFavorite = this.userProvider.hasFavorite(
-                  this.session.name
-                );
+                // this.isFavorite = this.userProvider.hasFavorite(
+                //   this.session.name
+                // );
 
                 break;
               }
@@ -52,13 +52,13 @@ export class SessionDetailPage {
   }
 
   toggleFavorite() {
-    if (this.userProvider.hasFavorite(this.session.name)) {
-      this.userProvider.removeFavorite(this.session.name);
-      this.isFavorite = false;
-    } else {
-      this.userProvider.addFavorite(this.session.name);
-      this.isFavorite = true;
-    }
+    // if (this.userProvider.hasFavorite(this.session.name)) {
+    //   this.userProvider.removeFavorite(this.session.name);
+    //   this.isFavorite = false;
+    // } else {
+    //   this.userProvider.addFavorite(this.session.name);
+    //   this.isFavorite = true;
+    // }
   }
 
   shareSession() {

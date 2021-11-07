@@ -65,7 +65,7 @@ export class SchedulePage implements OnInit {
   //     profile_image_url_https:"https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGhvdG98ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
   //     }
   // ];
-  
+
   ios: boolean;
   dayIndex = 0;
   queryText = '';
@@ -110,7 +110,7 @@ export class SchedulePage implements OnInit {
   onError() {
     console.log("Error fetching rewards");
   }
-    
+
 
   updateSchedule() {
     // Close any open sliding items when the schedule updates
@@ -141,29 +141,29 @@ export class SchedulePage implements OnInit {
   }
 
   async addFavorite(slidingItem: HTMLIonItemSlidingElement, sessionData: any) {
-    if (this.user.hasFavorite(sessionData.name)) {
-      // Prompt to remove favorite
-      this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
-    } else {
-      // Add as a favorite
-      this.user.addFavorite(sessionData.name);
+    // if (this.user.hasFavorite(sessionData.name)) {
+    //   // Prompt to remove favorite
+    //   // this.removeFavorite(slidingItem, sessionData, 'Favorite already added');
+    // } else {
+    //   // Add as a favorite
+    //   // this.user.addFavorite(sessionData.name);
 
-      // Close the open item
-      slidingItem.close();
+    //   // Close the open item
+    //   slidingItem.close();
 
-      // Create a toast
-      const toast = await this.toastCtrl.create({
-        header: `${sessionData.name} was successfully added as a favorite.`,
-        duration: 3000,
-        buttons: [{
-          text: 'Close',
-          role: 'cancel'
-        }]
-      });
+    //   // Create a toast
+    //   const toast = await this.toastCtrl.create({
+    //     header: `${sessionData.name} was successfully added as a favorite.`,
+    //     duration: 3000,
+    //     buttons: [{
+    //       text: 'Close',
+    //       role: 'cancel'
+    //     }]
+    //   });
 
-      // Present the toast at the bottom of the page
-      await toast.present();
-    }
+    //   // Present the toast at the bottom of the page
+    //   await toast.present();
+    // }
 
   }
 
@@ -184,7 +184,7 @@ export class SchedulePage implements OnInit {
           text: 'Remove',
           handler: () => {
             // they want to remove this session from their favorites
-            this.user.removeFavorite(sessionData.name);
+            // this.user.removeFavorite(sessionData.name);
             this.updateSchedule();
 
             // close the sliding item and hide the option buttons
