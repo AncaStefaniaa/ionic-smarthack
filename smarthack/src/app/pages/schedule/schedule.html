@@ -15,7 +15,7 @@
           </ion-avatar>
           <ion-label>
             <h3>{{ item.publishedBy }}</h3>
-            <p>1h ago</p>
+            <p>{{ moment(item.createdAt).fromNow() }}</p>
           </ion-label>
         </ion-item>
 
@@ -25,9 +25,11 @@
         />
 
         <ion-card-content>
-          <ion-chip *ngFor="let item of [1,2,3]">
-            <ion-label>{{"#" + item}}</ion-label>
-          </ion-chip>
+          <span *ngIf="item.hashTags?.length > 0">
+            <ion-chip *ngFor="let hashtag of item.hashTags.split(',')">
+              <ion-label>#{{hashtag}}</ion-label>
+            </ion-chip>
+          </span>
           <p>{{item.content}}</p>
         </ion-card-content>
       </ion-card>

@@ -46,6 +46,7 @@
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
     "core-js": "^3.6.4",
+    "moment": "^2.29.1",
     "plugin": "^0.3.3",
     "rxjs": "^6.5.4",
     "sw-toolbox": "3.6.0",
