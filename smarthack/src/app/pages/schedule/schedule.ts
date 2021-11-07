@@ -105,6 +105,8 @@ export class SchedulePage implements OnInit {
   onSuccess(data) {
     console.log(data);
     this.feederItems = data;
+
+    this.feederItems.sort((a, b) => (a.date > b.date) ? 1 : -1)
   }
 
   onError() {

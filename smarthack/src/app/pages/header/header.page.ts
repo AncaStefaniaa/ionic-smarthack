@@ -20,7 +20,7 @@ export class Header implements OnInit {
         res.imageUrl ||
         "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y";
       this.name = res.firstName;
-      this.balance = 10;
+      this.balance = res.balance;
     });
   }
 }
