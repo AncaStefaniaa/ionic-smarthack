@@ -1,9 +1,17 @@
-<app-header></app-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Deet</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content>
-    <reward-slider
-      *ngFor="let item of groupedRewards"
-      [name]="item.name"
-      [rewards]="item.rewards"
-    ></reward-slider>
+<ion-content class="container">
+  <reward-slider
+    class="reward-slider"
+    *ngFor="let item of groupedRewards"
+    [name]="item.name"
+    [rewards]="item.rewards"
+  ></reward-slider>
 </ion-content>

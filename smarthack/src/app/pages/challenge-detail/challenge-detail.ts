@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ConferenceData } from "../../providers/conference-data";
 import { ActionSheetController } from "@ionic/angular";
 import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
@@ -24,7 +24,8 @@ export class ChallengeDetailPage {
     public confData: ConferenceData,
     public inAppBrowser: InAppBrowser,
     public camera: Camera,
-    public challengeService: ChallengeService
+    public challengeService: ChallengeService,
+    public router: Router
   ) {}
 
   ionViewWillEnter() {
@@ -125,6 +126,11 @@ export class ChallengeDetailPage {
       console.log(base64Image);
       this.challengeService.sendImage(base64Image).subscribe((res) => {
         console.log(res);
+        if (res) {
+          this.router.navigateByUrl("success");
+        } else {
+          this.router.navigateByUrl("reject");
+        }
       });
     });
   }
