@@ -18,7 +18,9 @@ export class ChallengeListPage implements OnInit {
     public userData: UserData
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {}
+
+  async ionViewDidEnter() {
     this.isLoading = true;
 
     const userObs = await this.userData.account();
