@@ -35,6 +35,7 @@
     "@ionic-native/status-bar": "5.0.0-beta.15",
     "@ionic/angular": "^5.1.1",
     "@ionic/storage": "^2.1.3",
+    "cordova": "^10.0.0",
     "cordova-browser": "6.0.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-camera": "^6.0.0",
@@ -45,9 +46,11 @@
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
     "core-js": "^3.6.4",
+    "plugin": "^0.3.3",
     "rxjs": "^6.5.4",
     "sw-toolbox": "3.6.0",
     "tslib": "^1.10.0",
+    "whitelist": "^1.0.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
