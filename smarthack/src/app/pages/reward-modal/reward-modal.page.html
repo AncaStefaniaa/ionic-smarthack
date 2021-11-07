@@ -33,5 +33,7 @@
       (click)="redeem()"
       >Redeem</ion-button
     >
+
+    <h5 *ngIf="isError" style="color: #9b2226; font-size: 18px; position: absolute; bottom: 100px;">Insufficient funds.</h5>
   </div>
 </ion-content>

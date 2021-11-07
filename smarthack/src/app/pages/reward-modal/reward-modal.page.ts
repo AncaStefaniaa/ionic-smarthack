@@ -11,7 +11,7 @@ export class RewardModalPage implements OnInit {
   @Input()
   reward: any;
 
-  isLoading = false;
+  isError = false;
 
   constructor(
     public modalController: ModalController,
@@ -25,22 +25,20 @@ export class RewardModalPage implements OnInit {
   }
 
   async redeem() {
-    this.isLoading = true;
-
+    this.isError = false;
     const obs = await this.rewardService.redeem({ rewardId: this.reward.id });
     obs.subscribe(
       (res) => {
-        this.isLoading = false;
         this.onSuccess(res);
       },
       () => {
-        this.isLoading = false;
         this.onError();
       }
     );
   }
 
   onSuccess({ code }) {
+    this.isError = false;
     this.reward = {
       ...this.reward,
       code,
@@ -52,5 +50,6 @@ export class RewardModalPage implements OnInit {
 
   onError() {
     console.log("Error redeem");
+    this.isError = true;
   }
 }
