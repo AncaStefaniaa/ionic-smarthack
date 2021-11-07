@@ -1,0 +1,19 @@
+
+ion-avatar {
+  width: 150px;
+  height: 150px;
+}
+
+
+p {
+  font-size: 48px;
+
+  &.blur {
+    color: transparent;
+    text-shadow: 0 0 15px #000;
+  }
+}
+
+.redeem {
+  margin-top: -95px;
+}
