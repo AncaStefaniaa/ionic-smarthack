@@ -8,7 +8,8 @@ import {
   CameraOptions,
   PictureSourceType,
 } from "@ionic-native/camera/ngx";
-import { ChallengeService } from "./challenge-detail.service";
+import { ChallengeService } from "../../providers/challenge.service";
+
 @Component({
   selector: "page-speaker-detail",
   templateUrl: "challenge-detail.html",
@@ -27,9 +28,10 @@ export class ChallengeDetailPage implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe(async (params) => {
       const id = params["id"];
-      this.challengeService.get(id).subscribe(
+      const obs = await this.challengeService.get(id);
+      obs.subscribe(
         (res) => {
           this.isLoading = false;
           this.onSuccess(res);
@@ -61,15 +63,14 @@ export class ChallengeDetailPage implements OnInit {
       targetWidth: 500,
     };
 
-    this.camera.getPicture(options).then((imageData) => {
-      let base64Image = "data:image/jpeg;base64," + imageData;
-
-      console.log(base64Image);
-      this.challengeService
-        .sendImage(this.challenge.id, base64Image)
-        .subscribe((res) => {
-          console.log(res);
-        });
+    this.camera.getPicture(options).then(async (imageData) => {
+      const obs = await this.challengeService.sendImage(
+        this.challenge.id,
+        imageData
+      );
+      obs.subscribe((res) => {
+        console.log("res", res);
+      });
     });
   }
 }

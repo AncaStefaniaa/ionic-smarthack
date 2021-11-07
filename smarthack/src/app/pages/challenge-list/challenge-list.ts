@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ChallengeService } from "../../providers/challenge.service";
 import { ConferenceData } from "../../providers/conference-data";
-import { ChallengeService } from "../challenge-detail/challenge-detail.service";
 
 @Component({
   selector: "page-speaker-list",
@@ -13,9 +13,10 @@ export class ChallengeListPage implements OnInit {
 
   constructor(public challengeService: ChallengeService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.isLoading = true;
-    this.challengeService.getAll().subscribe(
+    const obs = await this.challengeService.getAll();
+    obs.subscribe(
       (res) => {
         this.isLoading = false;
         this.onSuccess(res);
@@ -28,8 +29,10 @@ export class ChallengeListPage implements OnInit {
   }
 
   onSuccess(data) {
-    console.log(data);
-    this.challenges = data;
+    console.log("challenges", data);
+    this.challenges = data.sort((x, y) =>
+      x.completed === y.completed ? 0 : x.completed ? 1 : -1
+    );
   }
 
   onError() {

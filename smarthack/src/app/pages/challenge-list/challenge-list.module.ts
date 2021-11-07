@@ -4,9 +4,15 @@ import { IonicModule } from "@ionic/angular";
 
 import { ChallengeListPage } from "./challenge-list";
 import { ChallengeListPageRoutingModule } from "./challenge-list-routing.module";
+import { ChallengeDetailModule } from "../challenge-detail/challenge-detail.module";
 
 @NgModule({
-  imports: [CommonModule, IonicModule, ChallengeListPageRoutingModule],
+  imports: [
+    CommonModule,
+    IonicModule,
+    ChallengeListPageRoutingModule,
+    ChallengeDetailModule,
+  ],
   declarations: [ChallengeListPage],
 })
 export class ChallengeListModule {}

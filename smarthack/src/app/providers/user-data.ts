@@ -9,7 +9,7 @@ export class UserData {
   favorites: string[] = [];
   HAS_LOGGED_IN = "hasLoggedIn";
   HAS_SEEN_TUTORIAL = "hasSeenTutorial";
-  apiUrl: string = "http://192.168.100.32:8080/api";
+  apiUrl: string = "https://192.168.100.32:8080/api";
 
   constructor(public storage: Storage, private httpClient: HttpClient) {}
 
@@ -18,7 +18,12 @@ export class UserData {
   }
 
   login(userData) {
-    return this.httpClient.post<any>(`${this.apiUrl}/authenticate`, userData);
+    return this.httpClient.post<any>(`${this.apiUrl}/authenticate`, userData, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      }),
+    });
   }
 
   async account() {

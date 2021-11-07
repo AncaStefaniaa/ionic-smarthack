@@ -6,7 +6,7 @@ import { Storage } from "@ionic/storage";
   providedIn: "root",
 })
 export class FeederService {
-  apiUrl: string = "http://192.168.100.32:8080/api";
+  apiUrl: string = "https://192.168.100.32:8080/api";
 
   constructor(protected http: HttpClient, private storage: Storage) {}
 
