@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 
@@ -8,9 +8,25 @@ import { Storage } from "@ionic/storage";
 export class RewardService {
   apiUrl: string = "https://192.168.100.32:8080/api";
 
-  constructor(protected http: HttpClient, private storage: Storage) {}
+  constructor(protected httpClient: HttpClient, private storage: Storage) {}
 
-  getAll() {
-    return this.http.get<any>(`${this.apiUrl}/rewards`);
+  async getAll() {
+    const jwt = await this.storage.get("token");
+    return this.httpClient.get<any>(`${this.apiUrl}/rewards`, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      }),
+    });
+  }
+
+  async redeem(data) {
+    const jwt = await this.storage.get("token");
+    return this.httpClient.post<any>(`${this.apiUrl}/redeemReward`, data, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      }),
+    });
   }
 }

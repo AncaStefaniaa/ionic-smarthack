@@ -12,10 +12,11 @@ export class RewardPage implements OnInit {
 
   constructor(private rewardsService: RewardService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.isLoading = true;
 
-    this.rewardsService.getAll().subscribe(
+    const obs = await this.rewardsService.getAll();
+    obs.subscribe(
       (res) => {
         this.isLoading = false;
         this.onSuccess(res);
@@ -34,9 +35,11 @@ export class RewardPage implements OnInit {
       const current = groups[company] || [];
       groups[company] = [...current, reward];
     });
-    this.groupedRewards = Object.values(groups).map((group) => ({
+    this.groupedRewards = Object.values(groups).map((group: any[]) => ({
       name: group[0].company.name,
-      rewards: group,
+      rewards: group.sort((x, y) =>
+        x.completed === y.completed ? 0 : x.completed ? 1 : -1
+      ),
     }));
   }
 

@@ -8,6 +8,7 @@ import { RewardPageRoutingModule } from "./reward-routing.module";
 import { RewardSlider } from "../reward-slider/reward-slider";
 import { RewardModalPage } from "../reward-modal/reward-modal.page";
 import { HeaderModule } from "../header/header.module";
+import { RewardService } from "./reward.service";
 
 @NgModule({
   imports: [
@@ -15,10 +16,11 @@ import { HeaderModule } from "../header/header.module";
     FormsModule,
     IonicModule,
     RewardPageRoutingModule,
-    HeaderModule
+    HeaderModule,
   ],
   declarations: [RewardPage, RewardSlider, RewardModalPage],
   entryComponents: [RewardSlider, RewardModalPage],
   bootstrap: [RewardPage],
+  providers: [RewardService],
 })
 export class RewardModule {}

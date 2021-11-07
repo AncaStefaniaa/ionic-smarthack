@@ -9,5 +9,6 @@
 <ion-content>
   <img src="{{reward.icon.url}}" class="slide-image" />
   <h2 class="slide-title">{{reward.content}}</h2>
-  <p>XJFW34</p>
+  <p>{{reward.code.toUpperCase() || 'XXXXXXXX'}}</p>
+  <button *ngIf="!reward.completed" (click)="redeem()">Redeem</button>
 </ion-content>
