@@ -40,9 +40,13 @@ export class RewardModalPage implements OnInit {
     );
   }
 
-  onSuccess(data) {
-    this.reward.code = data;
-    this.reward.completed = true;
+  onSuccess({ code }) {
+    this.reward = {
+      ...this.reward,
+      code,
+      completed: true,
+    };
+    window.dispatchEvent(new CustomEvent("user:update"));
   }
 
   onError() {
