@@ -12,9 +12,17 @@ export class RewardPage implements OnInit {
 
   constructor(private rewardsService: RewardService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    window.addEventListener("rewards:update", () => {
+      this.fetch();
+    });
+  }
 
   async ionViewDidEnter() {
+    this.fetch();
+  }
+
+  async fetch() {
     this.isLoading = true;
 
     const obs = await this.rewardsService.getAll();

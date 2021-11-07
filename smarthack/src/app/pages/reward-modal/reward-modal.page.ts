@@ -47,6 +47,7 @@ export class RewardModalPage implements OnInit {
       completed: true,
     };
     window.dispatchEvent(new CustomEvent("user:update"));
+    window.dispatchEvent(new CustomEvent("rewards:update"));
   }
 
   onError() {

@@ -1,14 +1,37 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button (click)="dismiss()">Close</ion-button>
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <img src="{{reward.icon.url}}" class="slide-image" />
-  <h2 class="slide-title">{{reward.content}}</h2>
-  <p>{{reward.code?.toUpperCase() || 'XXXXXXXX'}}</p>
-  <button *ngIf="!reward.completed" (click)="redeem()">Redeem</button>
+  <div
+    style="
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    "
+  >
+    <ion-avatar>
+      <img src="{{reward.icon.url}}" class="slide-image" />
+    </ion-avatar>
+    <h2 class="slide-title">{{reward.content}}</h2>
+    <p [ngClass]="reward.code ? '' : 'blur'">
+      {{reward.code?.toUpperCase() || 'XXXXXXXX'}}
+    </p>
+    <ion-button
+      class="redeem"
+      expand="block"
+      *ngIf="!reward.completed"
+      (click)="redeem()"
+      >Redeem</ion-button
+    >
+  </div>
 </ion-content>
