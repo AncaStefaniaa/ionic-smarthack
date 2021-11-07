@@ -67,12 +67,14 @@ export class ChallengeDetailPage implements OnInit {
       obs.subscribe(
         ({ completed }) => {
           this.isLoading = false;
-          this.showSuccessModal(completed);
+          // this.showSuccessModal(completed);
           window.dispatchEvent(new CustomEvent("user:update"));
+          this.router.navigateByUrl("success");
         },
         () => {
           this.isLoading = false;
-          this.showSuccessModal(false);
+          // this.showSuccessModal(false);
+          this.router.navigateByUrl("reject");
         }
       );
     });
