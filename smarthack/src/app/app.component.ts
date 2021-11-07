@@ -20,6 +20,7 @@ import { LoadingService } from "./loading.service";
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
+  address:string = '';
   appPages = [
     {
       title: "Feed",
@@ -60,7 +61,12 @@ export class AppComponent implements OnInit {
     }
   }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    const userObs = await this.userData.account();
+    userObs.subscribe((res) => {
+      this.address = res.walletAddress;
+    });
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {
