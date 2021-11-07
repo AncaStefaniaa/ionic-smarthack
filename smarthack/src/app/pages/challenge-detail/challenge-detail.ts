@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { ConferenceData } from "../../providers/conference-data";
+import { ActivatedRoute, Router } from "@angular/router";
+
 import { ActionSheetController, ModalController } from "@ionic/angular";
-import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+
 import {
   Camera,
   CameraOptions,
@@ -24,7 +24,8 @@ export class ChallengeDetailPage implements OnInit {
     public camera: Camera,
     private route: ActivatedRoute,
     private modalController: ModalController,
-    private challengeService: ChallengeService
+    private challengeService: ChallengeService,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -83,6 +84,15 @@ export class ChallengeDetailPage implements OnInit {
           ? "/app/tabs/schedule"
           : `/app/tabs/challenges/speaker-details/${this.challenge.id}`,
       },
+
+      // this.challengeService.sendImage(base64Image).subscribe((res) => {
+      //   console.log(res);
+      //   if (res) {
+      //     this.router.navigateByUrl("success");
+      //   } else {
+      //     this.router.navigateByUrl("reject");
+      //   }
+      // });
     });
     return await modal.present();
   }

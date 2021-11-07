@@ -16,14 +16,18 @@ import { RewardModalPage } from "../reward-modal/reward-modal.page";
             <ion-avatar style="display: inline">
               <img [src]="reward.icon.url" />
             </ion-avatar>
-            <ion-card-title>{{ reward.content }}</ion-card-title>
-            <ion-card-subtitle *ngIf="!reward.completed">{{ reward.value }} Deed</ion-card-subtitle>
+            <ion-card-title class="reward-title">{{
+              reward.content
+            }}</ion-card-title>
+            <ion-card-subtitle *ngIf="!reward.completed"
+              >{{ reward.value }} Deed</ion-card-subtitle
+            >
           </ion-card-header>
         </ion-card>
       </ion-slide>
     </ion-slides>
   `,
-  styles: [".redeemed { background-color: green; }"],
+  styleUrls: ["./reward-slider.scss"],
 })
 export class RewardSlider {
   @Input()

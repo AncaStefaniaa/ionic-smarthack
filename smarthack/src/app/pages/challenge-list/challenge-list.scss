@@ -83,3 +83,15 @@ ion-fab-button {
 ion-content.page {
   --ion-background-color: linear-gradient(180deg, #3b5249 30%, #f0f0f0 100%);
 }
+
+img.coin {
+  width: 70px;
+  height: 70px;
+}
+
+.reward {
+  display: flex;
+  &-number {
+    line-height: 4;
+  }
+}

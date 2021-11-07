@@ -1,18 +1,28 @@
 <ion-content class="page" fullscreen="true">
-  <ion-grid slot='fixed' style="position:relative">
+  <ion-grid slot="fixed" style="position: relative">
     <ion-row>
       <ion-col class="ion-padding" style="color: white">
-        <div style="display: flex; align-items: center; margin-top: -10px;">
-          <ion-menu-button style="margin-top: 10px; margin-left: -10px;"></ion-menu-button>
+        <div style="display: flex; align-items: center; margin-top: -10px">
+          <ion-menu-button
+            style="margin-top: 10px; margin-left: -10px"
+          ></ion-menu-button>
         </div>
-        <h1 ion-text style="font-size: 36px">Hello, <span style="font-weight: bold;">{{currentUser?.firstName}}</span>!</h1>
-        <h2 ion-text>Are you ready for new challenges?</h2>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-grid fixed style="padding-top: 250px;">
+  <ion-grid fixed>
+    <div style="padding: 50px 0px 0px 30px">
+      <h1 ion-text style="font-size: 36px; color: white">
+        Hello,
+        <span style="font-weight: bold; color: white"
+          >{{currentUser?.firstName}}</span
+        >!
+      </h1>
+      <h2 ion-text style="color: white">Are you ready for new challenges?</h2>
+    </div>
     <ion-row>
+      <ion-button routerLink="/success">bla</ion-button>
       <ion-col size="12" size-md="6" *ngFor="let challenge of challenges">
         <ion-card class="speaker-card" [disabled]="challenge.completed">
           <ion-card-header>
@@ -35,7 +45,13 @@
           <ion-card-content>
             <ion-list lines="none">
               <ion-item>
-                <h3 class="reward">{{challenge.rewardAmount}} Deed</h3>
+                <h3 class="reward">
+                  <div class="reward-number">{{challenge.rewardAmount}}</div>
+                  <img
+                    class="coin"
+                    src="../../../assets/img/speakers/coin3.gif"
+                  />
+                </h3>
               </ion-item>
               <ion-item
                 detail="false"
