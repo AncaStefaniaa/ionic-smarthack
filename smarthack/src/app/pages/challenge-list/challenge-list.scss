@@ -50,10 +50,6 @@ ion-card {
   --ion-background-color: rgb(255, 255, 255);
 }
 
-.container {
-  --ion-background-color: linear-gradient(180deg, #3b5249 30%, #f0f0f0 100%);
-}
-
 .item-container {
   margin-left: auto;
   margin-right: auto;
@@ -82,4 +78,8 @@ ion-card {
 
 ion-fab-button {
   --background: #382933;
+}
+
+ion-content.page {
+  --ion-background-color: linear-gradient(180deg, #3b5249 30%, #f0f0f0 100%);
 }

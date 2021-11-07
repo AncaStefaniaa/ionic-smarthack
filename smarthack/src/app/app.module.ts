@@ -13,6 +13,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { FormsModule } from "@angular/forms";
 import { Camera } from "@ionic-native/camera/ngx";
+import { HeaderModule } from "./pages/header/header.module";
 @NgModule({
   imports: [
     BrowserModule,
@@ -24,6 +25,7 @@ import { Camera } from "@ionic-native/camera/ngx";
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),
+    HeaderModule,
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar, Camera],

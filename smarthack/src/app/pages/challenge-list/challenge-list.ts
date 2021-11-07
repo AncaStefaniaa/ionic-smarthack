@@ -10,6 +10,7 @@ import { ConferenceData } from "../../providers/conference-data";
 export class ChallengeListPage implements OnInit {
   isLoading = false;
   challenges = [];
+  currentUser = { name: "George" }
 
   constructor(public challengeService: ChallengeService) {}
 
