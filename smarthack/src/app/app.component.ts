@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     {
       title: "Feed",
       url: "/app/tabs/schedule",
-      icon: "calendar",
+      icon: "list",
     },
     {
       title: "Challenges",
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
     {
       title: "Rewards",
       url: "/app/tabs/reward",
-      icon: "information-circle",
+      icon: "star",
     },
   ];
   loggedIn = false;
