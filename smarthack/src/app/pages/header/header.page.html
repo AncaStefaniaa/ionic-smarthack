@@ -1,9 +1,15 @@
-<ion-header>
-  <ion-avatar slot="start">
-    <img [src]="avatar" />
-  </ion-avatar>
-  <ion-label>
-    <h3>{{name}}</h3>
-    <p>{{balance}} Deet</p>
-  </ion-label>
+<ion-header class="ion-no-border">
+  <div class="header">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img [src]="avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-size: 22px; font-weight: bold; color: white">
+          {{name}}
+        </h3>
+        <p style="font-size: 16px; color: white">{{balance}} Deeds</p>
+      </ion-label>
+    </ion-item>
+  </div>
 </ion-header>
