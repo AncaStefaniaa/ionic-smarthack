@@ -56,8 +56,8 @@
                 detail="false"
                 routerLink="/app/tabs/speakers/speaker-details/{{challenge.id}}"
               >
-                <ion-label *ngFor="let hashtag of challenge.hashTags">
-                  <ion-chip>
+                <ion-label>
+                  <ion-chip  *ngFor="let hashtag of challenge.hashTags">
                     <ion-label>#{{hashtag.name}}</ion-label>
                   </ion-chip>
                 </ion-label>
