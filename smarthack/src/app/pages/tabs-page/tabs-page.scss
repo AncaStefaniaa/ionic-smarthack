@@ -5,3 +5,13 @@
 .tab-button {
   max-width: 200px;
 }
+
+.featured{
+  button{
+  width: 60px !important;
+  height: 60px !important;
+  margin-top: -60px;
+  z-index: 100000 !important;
+  position: absolute;
+  }
+}
