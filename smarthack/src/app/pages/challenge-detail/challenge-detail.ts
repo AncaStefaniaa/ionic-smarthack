@@ -27,7 +27,9 @@ export class ChallengeDetailPage implements OnInit {
     private challengeService: ChallengeService
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  async ionViewDidEnter() {
     this.isLoading = true;
     this.route.params.subscribe(async (params) => {
       const id = params["id"];
@@ -65,6 +67,7 @@ export class ChallengeDetailPage implements OnInit {
         ({ completed }) => {
           this.isLoading = false;
           this.showSuccessModal(completed);
+          window.dispatchEvent(new CustomEvent("user:update"));
         },
         () => {
           this.isLoading = false;

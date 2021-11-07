@@ -91,7 +91,9 @@ export class SchedulePage implements OnInit {
     private feederService: FeederService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  async ionViewDidEnter() {
     this.feederService.getAll().subscribe(
       (res) => {
         this.onSuccess(res);
